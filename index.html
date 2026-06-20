@@ -554,7 +554,6 @@
   }
   .project-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); margin-bottom: 16px; }
   .project-title { font-size: clamp(48px, 8vw, 96px); font-weight: 900; letter-spacing: -0.03em; line-height: 0.9; margin-bottom: 32px; }
-  .project-subtitle { font-size: clamp(18px, 2.2vw, 26px); font-weight: 700; color: var(--gray); margin-top: -20px; margin-bottom: 32px; }
   .project-brief { font-size: 18px; line-height: 1.7; color: #444; max-width: 680px; margin-bottom: 60px; border-left: 3px solid var(--purple); padding-left: 24px; }
   .project-images { display: flex; flex-direction: column; gap: 16px; }
   .project-images img { width: 100%; border-radius: 12px; display: block; cursor: zoom-in; transition: opacity 0.2s; }
@@ -783,6 +782,42 @@
     .ig-carousel-wrap { padding: 70px 16px; }
   }
 
+  /* POSTER GRID — full-bleed 3x3 gallery, uniform aspect ratio so there are no gaps */
+  .poster-grid-wrap {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
+    background: var(--black);
+    padding: 100px 24px;
+    display: flex;
+    justify-content: center;
+  }
+  .poster-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+    width: 100%;
+    max-width: 2200px;
+  }
+  .poster-grid img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    display: block;
+    cursor: zoom-in;
+    transition: opacity 0.2s;
+  }
+  .poster-grid img:hover { opacity: 0.88; }
+  @media (max-width: 900px) {
+    .poster-grid { grid-template-columns: 1fr 1fr; }
+    .poster-grid-wrap { padding: 60px 12px; }
+  }
+  @media (max-width: 560px) {
+    .poster-grid { grid-template-columns: 1fr; }
+  }
+
   /* BOOK VIEWER — large-format page flipper for the Saola Emblem book */
   .book-viewer {
     position: relative;
@@ -804,9 +839,6 @@
     transition: aspect-ratio 0.2s, width 0.2s;
   }
   .book-stage.spread { width: min(1080px, 100%); aspect-ratio: 2 / 1; }
-  /* "Without You..." book has portrait pages, not square ones — give its stage its own shape */
-  #shoeStage.single { width: min(640px, 100%); aspect-ratio: 4 / 5; }
-  #shoeStage.spread { width: min(1000px, 100%); aspect-ratio: 8 / 5; }
   .book-page-row {
     display: flex;
     width: 100%;
@@ -1019,13 +1051,13 @@
         </div>
       </div>
 
-      <div class="work-item huge-tall bleed-left" onclick="openProject('shoe')">
+      <div class="work-item huge-tall bleed-left" onclick="openProject('posters')">
         <div class="work-inner">
-          <img src="work-shoe.jpg" alt="Without You, I Can't Even Tie My Own Shoe" style="width:100%;height:100%;object-fit:cover;background:#3d5e78;display:block">
+          <img src="work-posters.jpg" alt="Posters" style="width:100%;height:100%;object-fit:cover;background:#0a0a0a;display:block">
         </div>
         <div class="work-overlay">
-          <div class="work-overlay-title">Without You, I Can't Even Tie My Own Shoe</div>
-          <div class="work-overlay-sub">Children's Book Illustration</div>
+          <div class="work-overlay-title">Posters</div>
+          <div class="work-overlay-sub">Poster Design</div>
         </div>
       </div>
 
@@ -1060,7 +1092,7 @@
         </div>
         <div class="work-overlay">
           <div class="work-overlay-title">Saola Emblem</div>
-          <div class="work-overlay-sub">Logo Design</div>
+          <div class="work-overlay-sub">Process Book Design</div>
         </div>
       </div>
 
@@ -1238,30 +1270,28 @@
   </div>
 </div>
 
-<div class="project-page" id="proj-shoe">
+<div class="project-page" id="proj-posters">
   <div class="project-nav">
     <button class="project-back" onclick="closeProject()">← Back to Work</button>
     <span style="font-size:13px;font-weight:700;color:var(--gray)">04 / 06</span>
   </div>
   <div class="project-content">
-    <p class="project-eyebrow">Children's Book Illustration</p>
-    <h1 class="project-title">Without You, I Can't<br>Even Tie My Own Shoe</h1>
-    <p class="project-brief">Without You, I Can't Even Tie My Own Shoe is a book project in which I had two days to complete the illustration for it. To create it, I sketched my ideas out with pen and paper, then digitized them to color everything and bring everything together. It is a simple children's story, aiming to showcase the love of a father and the need for guidance we have as children.</p>
+    <p class="project-eyebrow">Poster Design</p>
+    <h1 class="project-title">Posters</h1>
+    <p class="project-brief">A running collection of poster work, lecture series, music tour flyers, zoo campaigns, and a few personal experiments along the way.</p>
+  </div>
 
-    <div class="book-wrap" id="shoeWrap">
-      <div class="book-viewer" id="shoeBookViewer">
-        <button class="book-nav prev" onclick="shoeNav(-1)" aria-label="Previous page">&#8249;</button>
-        <div class="book-stage single" id="shoeStage">
-          <div class="book-page-row" id="shoePageRow">
-            <img src="shoe-pages/shoe-1.jpg" alt="Without You, I Can't Even Tie My Own Shoe, cover">
-          </div>
-        </div>
-        <button class="book-nav next" onclick="shoeNav(1)" aria-label="Next page">&#8250;</button>
-      </div>
-      <div class="book-footer">
-        <div class="book-counter" id="shoeCounterText">Page 1 of 8 — click the arrows or use ← →</div>
-        <button class="book-fullscreen-btn" id="shoeFullscreenBtn" onclick="toggleShoeFullscreen()">⤢ View Full Screen</button>
-      </div>
+  <div class="poster-grid-wrap">
+    <div class="poster-grid">
+      <img src="poster-1.jpg" alt="Play That Works — Paul Rand lecture poster, blue">
+      <img src="poster-2.jpg" alt="Play That Works — Paul Rand lecture poster, yellow">
+      <img src="poster-3.jpg" alt="Play That Works — Paul Rand lecture poster, red">
+      <img src="poster-4.jpg" alt="I Am Who I Am — burning bush poster">
+      <img src="poster-5.jpg" alt="Caleb Hearn Europe tour poster">
+      <img src="poster-6.jpg" alt="On the Prowl — cheetah poster">
+      <img src="poster-7.jpg" alt="Soar High at the Zoo — Saint Louis Zoo blue jay poster">
+      <img src="poster-8.jpg" alt="Twist, Let's Get Dizzy poster">
+      <img src="poster-9.jpg" alt="Halftones poster">
     </div>
   </div>
 </div>
@@ -1332,7 +1362,6 @@
   <div class="project-content">
     <p class="project-eyebrow">Logo Design</p>
     <h1 class="project-title">Saola Emblem</h1>
-    <p class="project-subtitle">Process Book Design</p>
     <p class="project-brief">Saola Emblem is a study in Graphic Design I of Lance Wyman's emblem system for the Smithsonian National Zoo, extended with a mark of my own. I chose the Saola, one of the rarest mammals on earth, and worked to simplify its form into something that fits in/belongs in Wyman's system (pictured above).</p>
 
     <div class="book-wrap" id="bookWrap">
@@ -1407,7 +1436,7 @@
   function closeLightbox() {
     document.getElementById('lightbox').classList.remove('open');
   }
-  document.querySelectorAll('.project-images img, .full-bleed-img, .posters-row img').forEach(img => {
+  document.querySelectorAll('.project-images img, .full-bleed-img, .posters-row img, .poster-grid img').forEach(img => {
     img.addEventListener('click', e => {
       e.stopPropagation();
       openLightbox(img.src, img.alt);
@@ -1426,9 +1455,6 @@
     const saolaOpen = document.getElementById('proj-saola').classList.contains('open');
     if (saolaOpen && e.key === 'ArrowRight') bookNav(1);
     if (saolaOpen && e.key === 'ArrowLeft') bookNav(-1);
-    const shoeOpen = document.getElementById('proj-shoe').classList.contains('open');
-    if (shoeOpen && e.key === 'ArrowRight') shoeNav(1);
-    if (shoeOpen && e.key === 'ArrowLeft') shoeNav(-1);
   });
 
   // Saola Emblem book viewer — large-format page flipper
@@ -1497,73 +1523,6 @@
   function updateBookFullscreenBtn() {
     const isFs = document.fullscreenElement || document.webkitFullscreenElement;
     const btn = document.getElementById('bookFullscreenBtn');
-    if (btn) btn.textContent = isFs ? '⤡ Exit Full Screen' : '⤢ View Full Screen';
-  }
-
-  // "Without You, I Can't Even Tie My Own Shoe" book viewer — same large-format page flipper as Saola
-  const shoeViews = [
-    { file: 'shoe-1.jpg', spread: false },
-    { file: 'shoe-2.jpg', spread: false },
-    { file: 'shoe-3.jpg', spread: false },
-    { file: 'shoe-4.jpg', spread: false },
-    { file: 'shoe-5.jpg', spread: true },
-    { file: 'shoe-6.jpg', spread: false },
-    { file: 'shoe-7.jpg', spread: false },
-    { file: 'shoe-8.jpg', spread: false },
-  ];
-  let shoeView = 0;
-  let shoeFlipping = false;
-
-  function shoeRender() {
-    const view = shoeViews[shoeView];
-    const stage = document.getElementById('shoeStage');
-    const row = document.getElementById('shoePageRow');
-    const counter = document.getElementById('shoeCounterText');
-
-    stage.classList.toggle('single', !view.spread);
-    stage.classList.toggle('spread', view.spread);
-    row.innerHTML = `<img src="shoe-pages/${view.file}" alt="Without You, I Can't Even Tie My Own Shoe, page ${shoeView + 1}">`;
-
-    counter.textContent = `Page ${shoeView + 1} of ${shoeViews.length} — click the arrows or use ← →`;
-    document.querySelector('#shoeBookViewer .book-nav.prev').disabled = shoeView === 0;
-    document.querySelector('#shoeBookViewer .book-nav.next').disabled = shoeView === shoeViews.length - 1;
-  }
-
-  function shoeNav(dir) {
-    const next = shoeView + dir;
-    if (next < 0 || next > shoeViews.length - 1 || shoeFlipping) return;
-    shoeFlipping = true;
-    const row = document.getElementById('shoePageRow');
-    row.classList.add(dir > 0 ? 'flip-next' : 'flip-prev');
-    setTimeout(() => {
-      shoeView = next;
-      shoeRender();
-      row.classList.remove('flip-next', 'flip-prev');
-      shoeFlipping = false;
-    }, 180);
-  }
-
-  document.getElementById('shoePageRow').addEventListener('click', e => {
-    const stage = document.getElementById('shoeStage');
-    const half = e.clientX - stage.getBoundingClientRect().left;
-    shoeNav(half > stage.offsetWidth / 2 ? 1 : -1);
-  });
-  shoeRender();
-
-  function toggleShoeFullscreen() {
-    const wrap = document.getElementById('shoeWrap');
-    const isFs = document.fullscreenElement || document.webkitFullscreenElement;
-    if (!isFs) {
-      (wrap.requestFullscreen || wrap.webkitRequestFullscreen).call(wrap);
-    } else {
-      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
-    }
-  }
-  document.addEventListener('fullscreenchange', updateShoeFullscreenBtn);
-  document.addEventListener('webkitfullscreenchange', updateShoeFullscreenBtn);
-  function updateShoeFullscreenBtn() {
-    const isFs = document.fullscreenElement || document.webkitFullscreenElement;
-    const btn = document.getElementById('shoeFullscreenBtn');
     if (btn) btn.textContent = isFs ? '⤡ Exit Full Screen' : '⤢ View Full Screen';
   }
 
