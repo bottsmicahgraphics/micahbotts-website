@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Micah Botts — Freelance Graphic Designer in STL</title>
+<meta name="description" content="Bold, clean graphic design from Micah Botts. Based in St. Louis. Currently taking clients.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap');
+
+  :root {
+    --purple: #b5319c;
+    --blue: #0051c6;
+    --yellow: #F5C518;
+    --red: #E63F2B;
+    --black: #0A0A0A;
+    --white: #F8F7F4;
+    --gray: #888;
+    --light-gray: #E8E8E8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: var(--white);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    background: rgba(248,247,244,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+  }
+  nav.scrolled { border-color: var(--light-gray); }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    color: var(--black);
+    height: 40px;
+    overflow: hidden;
+  }
+  .nav-logo img { height: 68px; width: auto; display: block; flex-shrink: 0; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--black);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--purple); }
+
+  /* HERO */
+  .color-flow {
+    position: relative;
+    background: var(--white);
+  }
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 120px 48px 80px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .color-dots {
+    display: flex; gap: 8px; margin-bottom: 28px; margin-left: 6px;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.6s 0.2s forwards;
+  }
+  .dot { width: 14px; height: 14px; border-radius: 50%; }
+  .hero-name {
+    font-size: clamp(72px, 10vw, 140px);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    color: var(--black);
+    opacity: 0; transform: translateY(30px);
+    animation: fadeUp 0.7s 0.3s forwards;
+  }
+  .hero-sub {
+    font-size: clamp(24px, 3.5vw, 48px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-top: 10px;
+    color: var(--black);
+    opacity: 0; transform: translateY(30px);
+    animation: fadeUp 0.7s 0.4s forwards;
+  }
+  .hero-body {
+    font-size: 16px;
+    color: rgba(10,10,10,0.7);
+    margin-top: 28px;
+    line-height: 1.6;
+    max-width: 400px;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.6s 0.6s forwards;
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 36px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--black);
+    transition: gap 0.2s, color 0.2s;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.6s 0.8s forwards;
+  }
+  .hero-cta:hover { color: var(--purple); gap: 14px; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+  .hero-cta-row {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-top: 36px;
+  }
+  .hero-cta-row .hero-cta { margin-top: 0; }
+  .hero-contact-btn {
+    display: inline-block;
+    padding: 16px 32px;
+    background: var(--black);
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 100px;
+    transition: background 0.2s, transform 0.2s;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.6s 0.9s forwards;
+  }
+  .hero-contact-btn:hover { background: var(--yellow); transform: translateY(-2px); }
+
+
+  /* WORK */
+  #work { padding: 80px 0 120px; overflow: hidden; }
+  .work-header-wrap { padding: 0 48px; margin-bottom: 48px; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 16px;
+  }
+  .work-header {
+    font-size: clamp(48px, 7vw, 96px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+  }
+
+  /* MASONRY — two columns, matches reference: staggered start, no overlap */
+  .masonry-wrap {
+    width: 100%;
+    padding: 0 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+    position: relative;
+  }
+
+  .col-left {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .col-right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 140px;
+  }
+
+  /* Each work item — zoom on hover via transform on inner, overflow hidden on container */
+  .work-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 22px;
+    cursor: pointer;
+    background: #111;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s, transform 0.6s;
+    outline: none;
+  }
+  .work-item:focus-visible { box-shadow: 0 0 0 3px var(--purple); }
+  .work-item.visible { opacity: 1; transform: translateY(0); }
+
+  /* the two largest images bleed off the outer edge of their own column (left col -> left edge, right col -> right edge) so they never overlap the other column */
+  .bleed-left {
+    margin-left: -48px;
+    width: calc(100% + 48px);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .bleed-right {
+    margin-right: -48px;
+    width: calc(100% + 48px);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  /* aspect ratios matched to the reference layout */
+  .work-item.tall      { aspect-ratio: 3/4; }   /* graffiti portrait */
+  .work-item.sq-sm     { aspect-ratio: 1/1; }   /* cardinal, confetti */
+  .work-item.sq-md     { aspect-ratio: 11/10; } /* big diesel */
+  .work-item.big-tall  { aspect-ratio: 4/5; }   /* no strangers */
+  .work-item.huge-tall { aspect-ratio: 3/5; }   /* one way shirt */
+
+  /* the inner scales on hover — parent overflow:hidden clips it so nothing overlaps */
+  .work-inner {
+    position: absolute;
+    inset: 0;
+    transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+  .work-item:hover .work-inner,
+  .work-item:focus-visible .work-inner { transform: scale(1.12); }
+
+  .work-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.4s;
+  }
+  .work-item:hover img { filter: brightness(0.3); }
+
+  .work-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 24px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+  .work-item:hover .work-overlay { opacity: 1; }
+  .work-overlay-title {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .work-overlay-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* SERVICES — light bg */
+  #services {
+    background: var(--white);
+    padding: 120px 48px;
+  }
+  .services-headline {
+    font-size: clamp(36px, 5.5vw, 72px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 10px;
+    color: var(--black);
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+  .services-headline.visible { opacity: 1; transform: translateY(0); }
+  .services-sub {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 64px;
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.6s 0.1s, transform 0.6s 0.1s;
+  }
+  .services-sub.visible { opacity: 1; transform: translateY(0); }
+  .service-list { display: flex; flex-direction: column; }
+  .service-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 44px 0;
+    border-top: 1px solid var(--light-gray);
+    gap: 24px;
+    opacity: 0; transform: translateX(-20px);
+    transition: opacity 0.5s, transform 0.5s;
+  }
+  .service-row.visible { opacity: 1; transform: translateX(0); }
+  .service-row:last-child { border-bottom: 1px solid var(--light-gray); }
+  .service-left { display: flex; align-items: flex-start; gap: 24px; flex: 1; }
+  .service-dot { width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0; margin-top: 12px; }
+  .service-name {
+    font-size: clamp(30px, 3.9vw, 44px);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+    color: var(--black);
+  }
+  .service-desc { font-size: 18px; color: #666; line-height: 1.65; max-width: 540px; }
+  .service-price {
+    font-size: clamp(30px, 3.9vw, 44px);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ABOUT */
+  #about {
+    position: relative;
+    padding: 160px 48px 120px;
+    background: var(--white);
+    overflow: visible;
+  }
+  .about-mark {
+    position: absolute;
+    top: -204px;
+    left: 50%;
+    width: 484px;
+    height: auto;
+    display: block;
+    transform: translateY(140px);
+    opacity: 0;
+    transition: opacity 2s ease-out, transform 2s ease-out;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .about-mark.visible { opacity: 1; transform: translateY(0); }
+  @media (max-width: 768px) {
+    .about-mark { width: 242px; left: auto; right: 12px; top: -30px; }
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 370px 1fr;
+    gap: 48px;
+    align-items: center;
+    max-width: 996px;
+    margin: 0 auto;
+  }
+  .about-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 12px;
+    display: block;
+    opacity: 0; transform: translateX(-30px);
+    transition: opacity 0.7s, transform 0.7s;
+    background: #ddd;
+  }
+  .about-photo.visible { opacity: 1; transform: translateX(0); }
+  .about-content {
+    opacity: 0; transform: translateX(30px);
+    transition: opacity 0.7s 0.2s, transform 0.7s 0.2s;
+  }
+  .about-content.visible { opacity: 1; transform: translateX(0); }
+  .about-headline {
+    font-size: clamp(32px, 4.5vw, 58px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 32px;
+  }
+  .about-body { font-size: 16px; line-height: 1.75; color: #444; }
+  .about-body p + p { margin-top: 20px; }
+
+  /* CONTACT */
+  #contact {
+    background: var(--black);
+    color: var(--white);
+    padding: 120px 48px;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .contact-headline {
+    font-size: clamp(36px, 5.5vw, 72px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 24px;
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+  .contact-headline.visible { opacity: 1; transform: translateY(0); }
+  .contact-instagram {
+    font-size: 14px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 32px;
+    opacity: 0;
+    transition: opacity 0.6s 0.3s;
+  }
+  .contact-instagram.visible { opacity: 1; }
+  .contact-instagram a { color: var(--white); text-decoration: none; font-weight: 700; }
+  .contact-instagram a:hover { color: var(--yellow); }
+  .contact-form {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.6s 0.2s, transform 0.6s 0.2s;
+  }
+  .contact-form.visible { opacity: 1; transform: translateY(0); }
+  .form-group { margin-bottom: 20px; }
+  .form-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 8px;
+  }
+  .form-input, .form-textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 15px;
+    color: var(--white);
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-input:focus, .form-textarea:focus { border-color: var(--purple); }
+  .form-textarea { height: 120px; resize: vertical; }
+  .form-input::placeholder, .form-textarea::placeholder { color: rgba(255,255,255,0.25); }
+  #name:focus { border-color: var(--purple); }
+  #email:focus { border-color: var(--blue); }
+  #need:focus { border-color: var(--yellow); }
+  .form-submit {
+    width: 100%;
+    padding: 18px;
+    background: var(--white);
+    color: var(--black);
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    font-family: inherit;
+    margin-top: 8px;
+  }
+  .form-submit:hover { background: var(--yellow); transform: translateY(-2px); }
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(181,49,156,0.15);
+    border: 1px solid var(--purple);
+    border-radius: 12px;
+    color: var(--white);
+  }
+  .form-success h3 { font-size: 24px; font-weight: 900; margin-bottom: 8px; }
+  .form-success p { font-size: 14px; color: rgba(255,255,255,0.6); }
+
+  /* FOOTER */
+  footer {
+    padding: 24px 48px;
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer p { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+  /* PROJECT PAGES */
+  .project-page {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--white);
+    z-index: 200;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .project-page.open { display: block; }
+  .project-nav {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    background: rgba(248,247,244,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--light-gray);
+    z-index: 10;
+  }
+  .project-back {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--black);
+    cursor: pointer;
+    transition: color 0.2s;
+    background: none;
+    border: none;
+    font-family: inherit;
+  }
+  .project-back:hover { color: var(--purple); }
+  .project-content { padding: 80px 48px; max-width: 1400px; margin: 0 auto; }
+
+  /* full-bleed video banner at the top of a project page */
+  .project-hero-video {
+    display: block;
+    width: 100%;
+    height: 86vh;
+    object-fit: cover;
+    background: #000;
+  }
+  @media (max-width: 768px) {
+    .project-hero-video { height: 60vh; }
+  }
+  .project-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); margin-bottom: 16px; }
+  .project-title { font-size: clamp(48px, 8vw, 96px); font-weight: 900; letter-spacing: -0.03em; line-height: 0.9; margin-bottom: 32px; }
+  .project-subtitle { font-size: clamp(18px, 2.2vw, 26px); font-weight: 700; color: var(--gray); margin-top: -20px; margin-bottom: 32px; }
+  .project-brief { font-size: 18px; line-height: 1.7; color: #444; max-width: 680px; margin-bottom: 60px; border-left: 3px solid var(--purple); padding-left: 24px; }
+  .project-images { display: flex; flex-direction: column; gap: 16px; }
+  .project-images img { width: 100%; border-radius: 12px; display: block; cursor: zoom-in; transition: opacity 0.2s; }
+  .project-images img:hover { opacity: 0.88; }
+
+  /* LIGHTBOX */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,10,10,0.94);
+    z-index: 500;
+    align-items: center;
+    justify-content: center;
+    padding: 56px;
+    cursor: zoom-out;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    cursor: default;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    color: var(--white);
+    font-size: 32px;
+    font-weight: 300;
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+  }
+  @media (max-width: 768px) {
+    .lightbox { padding: 20px; }
+  }
+  .project-img-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .project-img-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .placeholder-note { color: var(--gray); font-size: 14px; padding: 40px; background: #f0f0f0; border-radius: 12px; text-align: center; }
+
+  /* FULL-BLEED BRAND BOARDS — break out of project-content's padded/max-width container to the true viewport edge */
+  .full-bleed-img {
+    display: block;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
+    cursor: zoom-in;
+  }
+
+  /* INSTAGRAM-STYLE INTERACTIVE CAROUSEL — No Strangers campaign slides */
+  .ig-carousel-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 140px 24px;
+    background: var(--black);
+  }
+  .ig-post {
+    width: 100%;
+    max-width: 620px;
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+  }
+  .ig-post-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+  }
+  .ig-avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .ig-handle { font-size: 13px; font-weight: 700; color: var(--black); flex: 1; }
+  .ig-menu { font-size: 14px; color: var(--gray); letter-spacing: 1px; }
+  .ig-stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: #000;
+    touch-action: pan-y;
+  }
+  .ig-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  .ig-track img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+    display: block;
+    cursor: default;
+  }
+  .ig-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.85);
+    color: var(--black);
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, opacity 0.2s;
+  }
+  .ig-arrow:hover { background: var(--white); }
+  .ig-arrow:disabled { opacity: 0; pointer-events: none; }
+  .ig-arrow-prev { left: 10px; }
+  .ig-arrow-next { right: 10px; }
+  .ig-counter {
+    position: absolute;
+    top: 10px; right: 12px;
+    background: rgba(0,0,0,0.55);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 100px;
+    letter-spacing: 0.02em;
+  }
+  .ig-heart {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 90px;
+    color: var(--white);
+    text-shadow: 0 4px 18px rgba(0,0,0,0.35);
+    pointer-events: none;
+    opacity: 0;
+  }
+  .ig-heart.pop { animation: igHeartPop 0.7s ease; }
+  @keyframes igHeartPop {
+    0%   { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+    15%  { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+    30%  { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+  }
+  .ig-dots {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    padding: 10px 0;
+  }
+  .ig-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--light-gray);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .ig-dot.active { background: var(--blue); transform: scale(1.3); }
+  .ig-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 4px 14px;
+    font-size: 22px;
+  }
+  .ig-like-btn { cursor: pointer; transition: transform 0.15s; user-select: none; }
+  .ig-like-btn:active { transform: scale(1.3); }
+  .ig-like-btn.liked { color: var(--red); }
+  .ig-action-icon { font-size: 19px; color: var(--black); }
+  .ig-caption {
+    font-size: 13px;
+    line-height: 1.5;
+    padding: 4px 14px 16px;
+    color: var(--black);
+  }
+  .ig-handle-inline { font-weight: 700; margin-right: 4px; }
+
+  /* POSTERS — full-bleed, oversized, black background */
+  .posters-wrap {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
+    background: var(--black);
+    padding: 140px 64px;
+    display: flex;
+    justify-content: center;
+  }
+  .posters-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 32px;
+    width: 100%;
+    max-width: 1900px;
+  }
+  .posters-row img {
+    width: 100%;
+    height: auto;
+    max-height: 88vh;
+    object-fit: contain;
+    border-radius: 4px;
+    display: block;
+    cursor: zoom-in;
+    transition: opacity 0.2s;
+  }
+  .posters-row img:hover { opacity: 0.88; }
+  @media (max-width: 900px) {
+    .posters-row { grid-template-columns: 1fr; }
+    .posters-row img { max-height: 70vh; }
+    .posters-wrap { padding: 80px 24px; }
+  }
+  @media (max-width: 768px) {
+    .ig-carousel-wrap { padding: 70px 16px; }
+  }
+
+  /* BOOK VIEWER — large-format page flipper for the Saola Emblem book */
+  .book-viewer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 16px;
+  }
+  .book-stage {
+    position: relative;
+    width: min(720px, 100%);
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #111;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+    perspective: 1400px;
+    transition: aspect-ratio 0.2s, width 0.2s;
+  }
+  .book-stage.spread { width: min(1080px, 100%); aspect-ratio: 2 / 1; }
+  /* "Without You..." book has portrait pages, not square ones — give its stage its own shape */
+  #shoeStage.single { width: min(640px, 100%); aspect-ratio: 4 / 5; }
+  #shoeStage.spread { width: min(1000px, 100%); aspect-ratio: 8 / 5; }
+  .book-page-row {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.22s ease, opacity 0.22s ease;
+    transform-origin: center center;
+  }
+  .book-page-row img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    background: var(--white);
+    cursor: pointer;
+  }
+  .book-stage.spread .book-page-row img:not(:only-child) { width: 50%; }
+  .book-page-row.flip-next { transform: rotateY(-10deg) scale(0.96); opacity: 0.35; }
+  .book-page-row.flip-prev { transform: rotateY(10deg) scale(0.96); opacity: 0.35; }
+  .book-nav {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1px solid var(--light-gray);
+    background: var(--white);
+    font-size: 26px;
+    line-height: 1;
+    color: var(--black);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s, border-color 0.2s;
+  }
+  .book-nav:hover { background: var(--purple); color: var(--white); border-color: var(--purple); transform: scale(1.06); }
+  .book-nav:disabled { opacity: 0.3; cursor: default; }
+  .book-nav:disabled:hover { background: var(--white); color: var(--black); transform: none; }
+  .book-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  .book-counter {
+    text-align: center;
+    font-size: 13px;
+    color: var(--gray);
+    letter-spacing: 0.02em;
+  }
+  .book-fullscreen-btn {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--black);
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: 100px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .book-fullscreen-btn:hover { background: var(--purple); color: var(--white); border-color: var(--purple); }
+
+  /* Fullscreen mode — book fills the viewport */
+  .book-wrap:fullscreen {
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100vw;
+    height: 100vh;
+    padding: 16px;
+  }
+  .book-wrap:fullscreen .book-viewer { width: 100%; flex: 1; min-height: 0; }
+  .book-wrap:fullscreen .book-stage {
+    width: auto;
+    height: 100%;
+    max-width: 96vw;
+    max-height: 100%;
+    background: var(--black);
+    box-shadow: none;
+  }
+  .book-wrap:fullscreen .book-stage.spread { width: auto; }
+  .book-wrap:fullscreen .book-page-row img { background: var(--black); }
+  .book-wrap:fullscreen .book-counter { color: rgba(255,255,255,0.6); }
+  .book-wrap:fullscreen .book-fullscreen-btn { background: rgba(255,255,255,0.1); color: var(--white); border-color: rgba(255,255,255,0.2); }
+  .book-wrap:fullscreen .book-fullscreen-btn:hover { background: var(--purple); border-color: var(--purple); }
+  .book-wrap:fullscreen .book-nav { background: rgba(255,255,255,0.1); color: var(--white); border-color: rgba(255,255,255,0.2); }
+  .book-wrap:fullscreen .book-nav:hover { background: var(--purple); border-color: var(--purple); }
+  @media (max-width: 768px) {
+    .book-viewer { gap: 10px; }
+    .book-nav { width: 40px; height: 40px; font-size: 20px; }
+  }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: 32px; right: 32px;
+    background: var(--black);
+    color: var(--white);
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-size: 14px;
+    transform: translateY(80px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    z-index: 999;
+    max-width: 320px;
+    border-left: 3px solid var(--purple);
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+  .toast-title { font-weight: 700; margin-bottom: 4px; }
+  .toast-body { color: rgba(255,255,255,0.6); font-size: 13px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { gap: 20px; }
+    #hero, #services, #about, #contact { padding: 80px 24px; }
+    #hero { padding-top: 100px; }
+    .work-header-wrap { padding: 0 24px; }
+    .masonry-wrap {
+      padding: 0 24px;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .col-left, .col-right { gap: 8px; }
+    .col-right { margin-top: 28px; }
+    .bleed-left { margin-left: -24px; width: calc(100% + 24px); }
+    .bleed-right { margin-right: -24px; width: calc(100% + 24px); }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .project-content { padding: 40px 24px; }
+    .project-nav { padding: 16px 24px; }
+    .project-img-row, .project-img-row.cols-3 { grid-template-columns: 1fr; }
+    footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="toast" id="toast">
+  <div class="toast-title">Message sent!</div>
+  <div class="toast-body">Micah will get back to you soon.</div>
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a class="nav-logo" href="#hero"><img src="logo-mark.png" alt="Micah Botts logo"> micahbotts</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO + WORK share one continuous accent-color gradient that fades to white by the end of Work -->
+<div class="color-flow">
+<section id="hero">
+  <div class="color-dots">
+    <div class="dot" style="background:var(--blue)"></div>
+    <div class="dot" style="background:var(--yellow)"></div>
+    <div class="dot" style="background:var(--red)"></div>
+    <div class="dot" style="background:var(--purple)"></div>
+  </div>
+  <h1 class="hero-name">Micah Botts</h1>
+  <h2 class="hero-sub">Freelance Graphic Designer in STL</h2>
+  <p class="hero-body">Currently taking clients.<br>Easy process, fast turnaround, work that looks like it belongs.</p>
+  <div class="hero-cta-row">
+    <a href="#contact" class="hero-contact-btn">Start a Project →</a>
+    <a href="#work" class="hero-cta">Scroll to see the work ↓</a>
+  </div>
+
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="masonry-wrap">
+
+    <!-- LEFT COLUMN -->
+    <div class="col-left">
+
+      <div class="work-item tall" onclick="openProject('nostrangers')">
+        <div class="work-inner">
+          <img src="work-nostrangers.jpg" alt="No Strangers" style="width:100%;height:100%;object-fit:cover;background:#1a0010;display:block">
+        </div>
+        <div class="work-overlay">
+          <div class="work-overlay-title">No Strangers</div>
+          <div class="work-overlay-sub">Brand Identity</div>
+        </div>
+      </div>
+
+      <div class="work-item sq-md" onclick="openProject('shaq')">
+        <div class="work-inner">
+          <img src="work-shaq.jpg" alt="Shaq Attack" style="width:100%;height:100%;object-fit:cover;background:#1a0800;display:block">
+        </div>
+        <div class="work-overlay">
+          <div class="work-overlay-title">Shaq Attack</div>
+          <div class="work-overlay-sub">Digital Collage</div>
+        </div>
+      </div>
+
+      <div class="work-item huge-tall bleed-left" onclick="openProject('shoe')">
+        <div class="work-inner">
+          <img src="work-shoe.jpg" alt="Without You, I Can't Even Tie My Own Shoe" style="width:100%;height:100%;object-fit:cover;background:#3d5e78;display:block">
+        </div>
+        <div class="work-overlay">
+          <div class="work-overlay-title">Without You, I Can't Even Tie My Own Shoe</div>
+          <div class="work-overlay-sub">Children's Book Illustration</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN — offset down to start lower than left, like the reference -->
+    <div class="col-right">
+
+      <div class="work-item sq-sm" onclick="openProject('birds')">
+        <div class="work-inner">
+          <img src="work-birds.jpg" alt="Vector Birds" style="width:100%;height:100%;object-fit:cover;background:#2d6a4f;display:block">
+        </div>
+        <div class="work-overlay">
+          <div class="work-overlay-title">Vector Bird Series</div>
+          <div class="work-overlay-sub">Illustration</div>
+        </div>
+      </div>
+
+      <div class="work-item big-tall bleed-right" onclick="openProject('broken')">
+        <div class="work-inner">
+          <img src="work-broken.jpg" alt="In the Midst of the Broken" style="width:100%;height:100%;object-fit:cover;background:#1a1a2e;display:block">
+        </div>
+        <div class="work-overlay">
+          <div class="work-overlay-title">In the Midst of the Broken</div>
+          <div class="work-overlay-sub">Art Direction</div>
+        </div>
+      </div>
+
+      <div class="work-item sq-sm" onclick="openProject('saola')">
+        <div class="work-inner">
+          <img src="work-saola.jpg" alt="Saola Emblem" style="width:100%;height:100%;object-fit:cover;background:#0a0a0a;display:block">
+        </div>
+        <div class="work-overlay">
+          <div class="work-overlay-title">Saola Emblem</div>
+          <div class="work-overlay-sub">Logo Design</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="section-label" style="color:var(--yellow)">Services</p>
+  <h2 class="services-headline">Design help that doesn't<br>make things complicated.</h2>
+  <p class="services-sub">Pick the level you need. If it's not listed here, send the idea and I'll tell you what makes sense.</p>
+  <div class="service-list">
+    <div class="service-row">
+      <div class="service-left">
+        <div class="service-dot" style="background:var(--purple)"></div>
+        <div>
+          <div class="service-name">Brand Starter</div>
+          <div class="service-desc">A logo mark, two concepts, two rounds of revisions. Good for businesses that need something solid to build from.</div>
+        </div>
+      </div>
+      <div class="service-price" style="color:var(--purple)">$200</div>
+    </div>
+    <div class="service-row">
+      <div class="service-left">
+        <div class="service-dot" style="background:var(--blue)"></div>
+        <div>
+          <div class="service-name">Full Brand System</div>
+          <div class="service-desc">Logo, color palette, typography, and a simple brand guide. Everything you need to look consistent everywhere.</div>
+        </div>
+      </div>
+      <div class="service-price" style="color:var(--blue)">$500</div>
+    </div>
+    <div class="service-row">
+      <div class="service-left">
+        <div class="service-dot" style="background:var(--yellow)"></div>
+        <div>
+          <div class="service-name">Custom Design</div>
+          <div class="service-desc">Posters, flyers, merch graphics, social posts, event materials. Scope varies so reach out for a quote.</div>
+        </div>
+      </div>
+      <div class="service-price" style="color:var(--yellow)">Quote</div>
+    </div>
+    <div class="service-row">
+      <div class="service-left">
+        <div class="service-dot" style="background:var(--red)"></div>
+        <div>
+          <div class="service-name">Monthly Retainer</div>
+          <div class="service-desc">Recurring social media graphics delivered every month. You stay consistent, I handle the visuals.</div>
+        </div>
+      </div>
+      <div class="service-price" style="color:var(--red)">$300/mo</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <img class="about-mark" src="about-mark.png" alt="">
+  <p class="section-label" style="color:var(--purple)">About</p>
+  <div class="about-grid">
+    <img class="about-photo" src="about-photo.jpg" alt="Micah Botts">
+    <div class="about-content">
+      <h2 class="about-headline">I care about making work people can actually use.</h2>
+      <div class="about-body">
+        <p>I'm Micah Botts, a graphic designer based in St. Louis. I make logos, posters, brand systems, and the kind of visual stuff small businesses need when they want to look more serious without feeling fake.</p>
+        <p>I care about clear ideas, strong type, and design that has a real reason behind it. My Zoo internship taught me how much design has to work in public, not just on a screen.</p>
+        <p>No Strangers is a personal project, but it says a lot about how I think. Make it welcoming, make it direct, make it something people remember. I'm currently taking clients and I'm easy to reach.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label" style="color:rgba(255,255,255,0.4)">Contact</p>
+  <div class="contact-grid">
+    <div>
+      <h2 class="contact-headline">Tell me what you need. I'll tell you what makes sense.</h2>
+      <p class="contact-instagram">Instagram: <a href="https://instagram.com/micahbotts" target="_blank">@micahbotts</a></p>
+    </div>
+    <div class="contact-form">
+      <form id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label class="form-label" for="name">Name</label>
+          <input class="form-input" type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Email</label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="you@email.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="need">What do you need?</label>
+          <textarea class="form-textarea" id="need" name="need" placeholder="Logo, poster, brand system..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send It →</button>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <h3>You're in.</h3>
+        <p>Micah will be in touch shortly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Micah Botts. All rights reserved.</p>
+  <p>Freelance Graphic Designer — St. Louis, MO</p>
+</footer>
+
+<!-- PROJECT PAGES -->
+<div class="project-page" id="proj-broken">
+  <div class="project-nav">
+    <button class="project-back" onclick="closeProject()">← Back to Work</button>
+    <span style="font-size:13px;font-weight:700;color:var(--gray)">01 / 06</span>
+  </div>
+  <video class="project-hero-video" autoplay muted loop playsinline poster="broken-video-poster.jpg">
+    <source src="broken-video.mp4" type="video/mp4">
+  </video>
+  <div class="project-content">
+    <p class="project-eyebrow">Art Direction</p>
+    <h1 class="project-title">In the Midst<br>of the Broken</h1>
+    <p class="project-brief">In the Midst of the Broken aims to communicate that even through the brokenness and sadness in the world, we can add life and joy. The colorful sculptures create a strong contrast against the overgrown, deteriorating building, with a visual tension. The main mask/helmet showcases our minds moving through pain and suffering while also looking onward with hope and optimism. Standing amongst the graffiti and markings of others shows how what we make is a beautiful piece of the broader community.</p>
+    <div class="project-images">
+      <div class="project-img-row cols-3">
+        <img src="broken-2.jpg" alt="In the Midst of the Broken — mask standing in doorway">
+        <img src="broken-4.jpg" alt="In the Midst of the Broken — mask close-up">
+        <img src="broken-1.jpg" alt="In the Midst of the Broken — holding the mask">
+      </div>
+      <div class="project-img-row">
+        <img src="broken-5.jpg" alt="In the Midst of the Broken — figure inside the building">
+        <img src="broken-6.jpg" alt="In the Midst of the Broken — figure beside graffiti wall">
+      </div>
+      <img src="broken-3.jpg" alt="In the Midst of the Broken — deteriorating building exterior">
+    </div>
+  </div>
+</div>
+
+<div class="project-page" id="proj-birds">
+  <div class="project-nav">
+    <button class="project-back" onclick="closeProject()">← Back to Work</button>
+    <span style="font-size:13px;font-weight:700;color:var(--gray)">02 / 06</span>
+  </div>
+  <div class="project-content">
+    <p class="project-eyebrow">Illustration</p>
+    <h1 class="project-title">Vector Bird<br>Series</h1>
+    <p class="project-brief">I chose three vector birds: an American Goldfinch, a Cardinal, and a Blue Jay, which I built from simple shapes starting with the same base circle. The constraint pushed the designs to stay consistent, and they ended up feeling like a really natural set. Made in Illustrator.</p>
+    <div class="project-images">
+      <div class="project-img-row cols-3">
+        <img src="birds-goldfinch.jpg" alt="American Goldfinch vector illustration">
+        <img src="birds-cardinal.jpg" alt="Cardinal vector illustration">
+        <img src="birds-bluejay.jpg" alt="Blue Jay vector illustration">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="project-page" id="proj-shaq">
+  <div class="project-nav">
+    <button class="project-back" onclick="closeProject()">← Back to Work</button>
+    <span style="font-size:13px;font-weight:700;color:var(--gray)">03 / 06</span>
+  </div>
+  <div class="project-content">
+    <p class="project-eyebrow">Digital Collage</p>
+    <h1 class="project-title">Shaq<br>Attack</h1>
+    <p class="project-brief">Shaq Attack is my response to a project in the class Computer Art Studio where the task was to create a collage in Photoshop of an individual who has made change in the world. I chose Shaquille O'Neal because of his dominance in the NBA and how he has made a huge impact on the world through his accomplishments and fame. I ended up making three collages where I attempted to showcase Shaq's size and strength. The piece in the middle is a visual pun on his physical dominance in the paint, taken literally.</p>
+    <div class="project-images">
+      <div class="project-img-row cols-3">
+        <img src="shaq-bigdiesel.jpg" alt="The Big Diesel">
+        <img src="shaq-monster.jpg" alt="There's a Monster in the Paint">
+        <img src="shaq-largerthanlife.jpg" alt="Larger Than Life">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="project-page" id="proj-shoe">
+  <div class="project-nav">
+    <button class="project-back" onclick="closeProject()">← Back to Work</button>
+    <span style="font-size:13px;font-weight:700;color:var(--gray)">04 / 06</span>
+  </div>
+  <div class="project-content">
+    <p class="project-eyebrow">Children's Book Illustration</p>
+    <h1 class="project-title">Without You, I Can't<br>Even Tie My Own Shoe</h1>
+    <p class="project-brief">Without You, I Can't Even Tie My Own Shoe is a book project in which I had two days to complete the illustration for it. To create it, I sketched my ideas out with pen and paper, then digitized them to color everything and bring everything together. It is a simple children's story, aiming to showcase the love of a father and the need for guidance we have as children.</p>
+
+    <div class="book-wrap" id="shoeWrap">
+      <div class="book-viewer" id="shoeBookViewer">
+        <button class="book-nav prev" onclick="shoeNav(-1)" aria-label="Previous page">&#8249;</button>
+        <div class="book-stage single" id="shoeStage">
+          <div class="book-page-row" id="shoePageRow">
+            <img src="shoe-pages/shoe-1.jpg" alt="Without You, I Can't Even Tie My Own Shoe, cover">
+          </div>
+        </div>
+        <button class="book-nav next" onclick="shoeNav(1)" aria-label="Next page">&#8250;</button>
+      </div>
+      <div class="book-footer">
+        <div class="book-counter" id="shoeCounterText">Page 1 of 8 — click the arrows or use ← →</div>
+        <button class="book-fullscreen-btn" id="shoeFullscreenBtn" onclick="toggleShoeFullscreen()">⤢ View Full Screen</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="project-page" id="proj-nostrangers">
+  <div class="project-nav">
+    <button class="project-back" onclick="closeProject()">← Back to Work</button>
+    <span style="font-size:13px;font-weight:700;color:var(--gray)">05 / 06</span>
+  </div>
+  <div class="project-content">
+    <p class="project-eyebrow">Brand Identity</p>
+    <h1 class="project-title">No<br>Strangers</h1>
+    <p class="project-brief">No Strangers is a St. Louis based movement built around one idea: talk to people. I wanted the brand to feel confrontational but warm, direct without being cold. Hot pink, a calligraphic wordmark, and bold editorial layouts that actually stop the scroll.</p>
+  </div>
+
+  <img class="full-bleed-img" src="nostrangers-board-1.jpg" alt="No Strangers wordmark on yellow">
+  <img class="full-bleed-img" src="nostrangers-board-2.jpg" alt="No Strangers mark and color palette">
+  <img class="full-bleed-img" src="nostrangers-board-3.jpg" alt="No Strangers typography specimen and headline">
+
+  <div class="ig-carousel-wrap">
+    <div class="ig-post" id="igPost">
+      <div class="ig-post-header">
+        <img class="ig-avatar" src="ns-avatar.jpg" alt="No Strangers profile picture">
+        <div class="ig-handle">nostrangersstl</div>
+        <div class="ig-menu">&#8226;&#8226;&#8226;</div>
+      </div>
+      <div class="ig-stage" id="igStage">
+        <div class="ig-track" id="igTrack">
+          <img src="ns-carousel-1.jpg" alt="No Strangers carousel slide 1">
+          <img src="ns-carousel-2.jpg" alt="No Strangers carousel slide 2">
+          <img src="ns-carousel-3.jpg" alt="No Strangers carousel slide 3">
+          <img src="ns-carousel-4.jpg" alt="No Strangers carousel slide 4">
+          <img src="ns-carousel-5.jpg" alt="No Strangers carousel slide 5">
+          <img src="ns-carousel-6.jpg" alt="No Strangers carousel slide 6">
+          <img src="ns-carousel-7.jpg" alt="No Strangers carousel slide 7">
+          <img src="ns-carousel-8.jpg" alt="No Strangers carousel slide 8">
+          <img src="ns-carousel-9.jpg" alt="No Strangers carousel slide 9">
+        </div>
+        <div class="ig-heart" id="igHeart">&#10084;</div>
+        <button class="ig-arrow ig-arrow-prev" onclick="igNav(-1)" aria-label="Previous slide">&#8249;</button>
+        <button class="ig-arrow ig-arrow-next" onclick="igNav(1)" aria-label="Next slide">&#8250;</button>
+        <div class="ig-counter" id="igCounter">1 / 9</div>
+      </div>
+      <div class="ig-dots" id="igDots"></div>
+      <div class="ig-actions">
+        <span class="ig-like-btn" id="igLikeBtn" onclick="igToggleLike()">&#9825;</span>
+        <span class="ig-action-icon">&#128172;</span>
+        <span class="ig-action-icon">&#8599;</span>
+      </div>
+      <div class="ig-caption"><span class="ig-handle-inline">nostrangersstl</span> Slow down, and talk to a stranger. ✦ #nostrangers #stl</div>
+    </div>
+  </div>
+
+  <div class="posters-wrap">
+    <div class="posters-row">
+      <img src="nostrangers-poster-1.jpg" alt="No Strangers campaign — group photo poster">
+      <img src="nostrangers-poster-2.jpg" alt="No Strangers campaign — phone call poster">
+      <img src="nostrangers-poster-3.jpg" alt="No Strangers campaign — no doomscrolling poster">
+    </div>
+  </div>
+</div>
+
+<div class="project-page" id="proj-saola">
+  <div class="project-nav">
+    <button class="project-back" onclick="closeProject()">← Back to Work</button>
+    <span style="font-size:13px;font-weight:700;color:var(--gray)">06 / 06</span>
+  </div>
+  <div class="project-content">
+    <p class="project-eyebrow">Logo Design</p>
+    <h1 class="project-title">Saola Emblem</h1>
+    <p class="project-subtitle">Process Book Design</p>
+    <p class="project-brief">Saola Emblem is a study in Graphic Design I of Lance Wyman's emblem system for the Smithsonian National Zoo, extended with a mark of my own. I chose the Saola, one of the rarest mammals on earth, and worked to simplify its form into something that fits in/belongs in Wyman's system (pictured above).</p>
+
+    <div class="book-wrap" id="bookWrap">
+      <div class="book-viewer" id="saolaBook">
+        <button class="book-nav prev" onclick="bookNav(-1)" aria-label="Previous page">&#8249;</button>
+        <div class="book-stage single" id="bookStage">
+          <div class="book-page-row" id="bookPageRow">
+            <img src="saola-pages/page-01.jpg" alt="Saola Emblem book, page 1">
+          </div>
+        </div>
+        <button class="book-nav next" onclick="bookNav(1)" aria-label="Next page">&#8250;</button>
+      </div>
+      <div class="book-footer">
+        <div class="book-counter" id="bookCounterText">Page 1 of 36 — click the arrows or use ← →</div>
+        <button class="book-fullscreen-btn" id="bookFullscreenBtn" onclick="toggleBookFullscreen()">⤢ View Full Screen</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Nav scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const delay = parseInt(entry.target.dataset.delay) || 0;
+        setTimeout(() => entry.target.classList.add('visible'), delay);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.work-item').forEach((el, i) => {
+    el.dataset.delay = i * 100;
+    observer.observe(el);
+  });
+
+  document.querySelectorAll(
+    '.services-headline, .services-sub, .about-photo, .about-content, .about-mark, .contact-headline, .contact-instagram, .contact-form'
+  ).forEach(el => observer.observe(el));
+
+  document.querySelectorAll('.service-row').forEach((el, i) => {
+    el.dataset.delay = i * 80;
+    observer.observe(el);
+  });
+
+  // Project pages
+  function openProject(id) {
+    const page = document.getElementById('proj-' + id);
+    if (!page) return;
+    page.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    page.scrollTop = 0;
+  }
+  function closeProject() {
+    document.querySelectorAll('.project-page').forEach(p => p.classList.remove('open'));
+    document.body.style.overflow = '';
+  }
+
+  // Lightbox — click any project image to view it full-screen
+  function openLightbox(src, alt) {
+    const lb = document.getElementById('lightbox');
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightboxImg').alt = alt || '';
+    lb.classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+  document.querySelectorAll('.project-images img, .full-bleed-img, .posters-row img').forEach(img => {
+    img.addEventListener('click', e => {
+      e.stopPropagation();
+      openLightbox(img.src, img.alt);
+    });
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      if (document.getElementById('lightbox').classList.contains('open')) {
+        closeLightbox();
+      } else {
+        closeProject();
+      }
+      return;
+    }
+    const saolaOpen = document.getElementById('proj-saola').classList.contains('open');
+    if (saolaOpen && e.key === 'ArrowRight') bookNav(1);
+    if (saolaOpen && e.key === 'ArrowLeft') bookNav(-1);
+    const shoeOpen = document.getElementById('proj-shoe').classList.contains('open');
+    if (shoeOpen && e.key === 'ArrowRight') shoeNav(1);
+    if (shoeOpen && e.key === 'ArrowLeft') shoeNav(-1);
+  });
+
+  // Saola Emblem book viewer — large-format page flipper
+  // page 1 = front cover (single), pages 2-35 = seamless spreads, page 36 = back cover (single)
+  const SAOLA_PAGE_COUNT = 36;
+  const saolaViews = [[1]];
+  for (let p = 2; p < SAOLA_PAGE_COUNT; p += 2) saolaViews.push([p, p + 1]);
+  saolaViews.push([SAOLA_PAGE_COUNT]);
+
+  let saolaView = 0;
+  let saolaFlipping = false;
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function bookRender() {
+    const view = saolaViews[saolaView];
+    const stage = document.getElementById('bookStage');
+    const row = document.getElementById('bookPageRow');
+    const counter = document.getElementById('bookCounterText');
+
+    stage.classList.toggle('single', view.length === 1);
+    stage.classList.toggle('spread', view.length === 2);
+    row.innerHTML = view.map(p =>
+      `<img src="saola-pages/page-${pad(p)}.jpg" alt="Saola Emblem book, page ${p}">`
+    ).join('');
+
+    const label = view.length === 1 ? `Page ${view[0]}` : `Pages ${view[0]}–${view[1]}`;
+    counter.textContent = `${label} of ${SAOLA_PAGE_COUNT} — click the arrows or use ← →`;
+    document.querySelector('#saolaBook .book-nav.prev').disabled = saolaView === 0;
+    document.querySelector('#saolaBook .book-nav.next').disabled = saolaView === saolaViews.length - 1;
+  }
+
+  function bookNav(dir) {
+    const next = saolaView + dir;
+    if (next < 0 || next > saolaViews.length - 1 || saolaFlipping) return;
+    saolaFlipping = true;
+    const row = document.getElementById('bookPageRow');
+    row.classList.add(dir > 0 ? 'flip-next' : 'flip-prev');
+    setTimeout(() => {
+      saolaView = next;
+      bookRender();
+      row.classList.remove('flip-next', 'flip-prev');
+      saolaFlipping = false;
+    }, 180);
+  }
+
+  document.getElementById('bookPageRow').addEventListener('click', e => {
+    const stage = document.getElementById('bookStage');
+    const half = e.clientX - stage.getBoundingClientRect().left;
+    bookNav(half > stage.offsetWidth / 2 ? 1 : -1);
+  });
+  bookRender();
+
+  // Fullscreen toggle for the Saola Emblem book viewer
+  function toggleBookFullscreen() {
+    const wrap = document.getElementById('bookWrap');
+    const isFs = document.fullscreenElement || document.webkitFullscreenElement;
+    if (!isFs) {
+      (wrap.requestFullscreen || wrap.webkitRequestFullscreen).call(wrap);
+    } else {
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    }
+  }
+  document.addEventListener('fullscreenchange', updateBookFullscreenBtn);
+  document.addEventListener('webkitfullscreenchange', updateBookFullscreenBtn);
+  function updateBookFullscreenBtn() {
+    const isFs = document.fullscreenElement || document.webkitFullscreenElement;
+    const btn = document.getElementById('bookFullscreenBtn');
+    if (btn) btn.textContent = isFs ? '⤡ Exit Full Screen' : '⤢ View Full Screen';
+  }
+
+  // "Without You, I Can't Even Tie My Own Shoe" book viewer — same large-format page flipper as Saola
+  const shoeViews = [
+    { file: 'shoe-1.jpg', spread: false },
+    { file: 'shoe-2.jpg', spread: false },
+    { file: 'shoe-3.jpg', spread: false },
+    { file: 'shoe-4.jpg', spread: false },
+    { file: 'shoe-5.jpg', spread: true },
+    { file: 'shoe-6.jpg', spread: false },
+    { file: 'shoe-7.jpg', spread: false },
+    { file: 'shoe-8.jpg', spread: false },
+  ];
+  let shoeView = 0;
+  let shoeFlipping = false;
+
+  function shoeRender() {
+    const view = shoeViews[shoeView];
+    const stage = document.getElementById('shoeStage');
+    const row = document.getElementById('shoePageRow');
+    const counter = document.getElementById('shoeCounterText');
+
+    stage.classList.toggle('single', !view.spread);
+    stage.classList.toggle('spread', view.spread);
+    row.innerHTML = `<img src="shoe-pages/${view.file}" alt="Without You, I Can't Even Tie My Own Shoe, page ${shoeView + 1}">`;
+
+    counter.textContent = `Page ${shoeView + 1} of ${shoeViews.length} — click the arrows or use ← →`;
+    document.querySelector('#shoeBookViewer .book-nav.prev').disabled = shoeView === 0;
+    document.querySelector('#shoeBookViewer .book-nav.next').disabled = shoeView === shoeViews.length - 1;
+  }
+
+  function shoeNav(dir) {
+    const next = shoeView + dir;
+    if (next < 0 || next > shoeViews.length - 1 || shoeFlipping) return;
+    shoeFlipping = true;
+    const row = document.getElementById('shoePageRow');
+    row.classList.add(dir > 0 ? 'flip-next' : 'flip-prev');
+    setTimeout(() => {
+      shoeView = next;
+      shoeRender();
+      row.classList.remove('flip-next', 'flip-prev');
+      shoeFlipping = false;
+    }, 180);
+  }
+
+  document.getElementById('shoePageRow').addEventListener('click', e => {
+    const stage = document.getElementById('shoeStage');
+    const half = e.clientX - stage.getBoundingClientRect().left;
+    shoeNav(half > stage.offsetWidth / 2 ? 1 : -1);
+  });
+  shoeRender();
+
+  function toggleShoeFullscreen() {
+    const wrap = document.getElementById('shoeWrap');
+    const isFs = document.fullscreenElement || document.webkitFullscreenElement;
+    if (!isFs) {
+      (wrap.requestFullscreen || wrap.webkitRequestFullscreen).call(wrap);
+    } else {
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    }
+  }
+  document.addEventListener('fullscreenchange', updateShoeFullscreenBtn);
+  document.addEventListener('webkitfullscreenchange', updateShoeFullscreenBtn);
+  function updateShoeFullscreenBtn() {
+    const isFs = document.fullscreenElement || document.webkitFullscreenElement;
+    const btn = document.getElementById('shoeFullscreenBtn');
+    if (btn) btn.textContent = isFs ? '⤡ Exit Full Screen' : '⤢ View Full Screen';
+  }
+
+  // Instagram-style carousel — No Strangers campaign slides
+  (function () {
+    const track = document.getElementById('igTrack');
+    const stage = document.getElementById('igStage');
+    const counter = document.getElementById('igCounter');
+    const dotsWrap = document.getElementById('igDots');
+    const prevBtn = document.querySelector('.ig-arrow-prev');
+    const nextBtn = document.querySelector('.ig-arrow-next');
+    if (!track) return;
+    const slides = track.children.length;
+    let igIndex = 0;
+
+    for (let i = 0; i < slides; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'ig-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => igGoTo(i));
+      dotsWrap.appendChild(dot);
+    }
+
+    function igRender() {
+      track.style.transform = `translateX(-${igIndex * 100}%)`;
+      counter.textContent = `${igIndex + 1} / ${slides}`;
+      [...dotsWrap.children].forEach((d, i) => d.classList.toggle('active', i === igIndex));
+      prevBtn.disabled = igIndex === 0;
+      nextBtn.disabled = igIndex === slides - 1;
+    }
+    function igGoTo(i) {
+      igIndex = Math.max(0, Math.min(slides - 1, i));
+      igRender();
+    }
+    window.igNav = function (dir) { igGoTo(igIndex + dir); };
+    igRender();
+
+    // swipe support
+    let startX = 0, dragging = false;
+    stage.addEventListener('touchstart', e => { startX = e.touches[0].clientX; dragging = true; }, { passive: true });
+    stage.addEventListener('touchend', e => {
+      if (!dragging) return;
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) igNav(dx < 0 ? 1 : -1);
+      dragging = false;
+    });
+
+    // double-click / double-tap to like, with heart pop animation
+    const heart = document.getElementById('igHeart');
+    const likeBtn = document.getElementById('igLikeBtn');
+    let liked = false;
+    function setLiked(state) {
+      liked = state;
+      likeBtn.classList.toggle('liked', liked);
+      likeBtn.innerHTML = liked ? '&#10084;' : '&#9825;';
+    }
+    window.igToggleLike = function () { setLiked(!liked); };
+    stage.addEventListener('dblclick', () => {
+      setLiked(true);
+      heart.classList.remove('pop');
+      requestAnimationFrame(() => heart.classList.add('pop'));
+    });
+  })();
+
+  // Form
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const need = document.getElementById('need').value;
+    try {
+      await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name, email, message: need })
+      });
+    } catch(err) {}
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+    const toast = document.getElementById('toast');
+    toast.querySelector('.toast-body').textContent = name + ', Micah will be in touch shortly.';
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 5000);
+  }
+</script>
+</body>
+</html>
