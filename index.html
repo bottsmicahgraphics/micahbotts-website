@@ -782,6 +782,32 @@
     .ig-carousel-wrap { padding: 70px 16px; }
   }
 
+  /* POSTER FEATURE — the cover poster, shown large above the grid */
+  .poster-feature-wrap {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
+    background: var(--black);
+    padding: 100px 24px 0;
+    display: flex;
+    justify-content: center;
+  }
+  .poster-feature-img {
+    width: auto;
+    height: auto;
+    max-width: min(640px, 90vw);
+    max-height: 88vh;
+    object-fit: contain;
+    display: block;
+    cursor: zoom-in;
+    transition: opacity 0.2s;
+  }
+  .poster-feature-img:hover { opacity: 0.88; }
+  @media (max-width: 900px) {
+    .poster-feature-wrap { padding: 60px 12px 0; }
+  }
+
   /* POSTER GRID — full-bleed 3x3 gallery, uniform aspect ratio so there are no gaps */
   .poster-grid-wrap {
     width: 100vw;
@@ -1281,6 +1307,10 @@
     <p class="project-brief">A running collection of poster work, lecture series, music tour flyers, zoo campaigns, and a few personal experiments along the way.</p>
   </div>
 
+  <div class="poster-feature-wrap">
+    <img class="poster-feature-img" src="work-posters.jpg" alt="Thinking Curiously — Paul Rand lecture poster">
+  </div>
+
   <div class="poster-grid-wrap">
     <div class="poster-grid">
       <img src="poster-1.jpg" alt="Play That Works — Paul Rand lecture poster, blue">
@@ -1436,7 +1466,7 @@
   function closeLightbox() {
     document.getElementById('lightbox').classList.remove('open');
   }
-  document.querySelectorAll('.project-images img, .full-bleed-img, .posters-row img, .poster-grid img').forEach(img => {
+  document.querySelectorAll('.project-images img, .full-bleed-img, .posters-row img, .poster-grid img, .poster-feature-img').forEach(img => {
     img.addEventListener('click', e => {
       e.stopPropagation();
       openLightbox(img.src, img.alt);
