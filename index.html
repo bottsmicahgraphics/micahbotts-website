@@ -1622,17 +1622,29 @@
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const need = document.getElementById('need').value;
+    const submitBtn = document.querySelector('.form-submit');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    const toast = document.getElementById('toast');
     try {
-      await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      const res = await fetch('https://formspree.io/f/mwvjgaga', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({ name, email, message: need })
       });
-    } catch(err) {}
-    document.getElementById('contactForm').style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
-    const toast = document.getElementById('toast');
-    toast.querySelector('.toast-body').textContent = name + ', Micah will be in touch shortly.';
+      if (!res.ok) throw new Error('Submission failed');
+
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+      toast.querySelector('.toast-title').textContent = 'Message sent!';
+      toast.querySelector('.toast-body').textContent = name + ', Micah will be in touch shortly.';
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send It →';
+      toast.querySelector('.toast-title').textContent = 'Something went wrong';
+      toast.querySelector('.toast-body').textContent = "Your message didn't send — try again, or email directly.";
+    }
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 5000);
   }
