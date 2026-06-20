@@ -69,6 +69,54 @@
   }
   .nav-links a:hover { color: var(--purple); }
 
+  .nav-burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  .nav-burger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--black);
+    transition: transform 0.25s, opacity 0.25s;
+  }
+  .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-burger.open span:nth-child(2) { opacity: 0; }
+  .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .nav-links-mobile {
+    display: none;
+    list-style: none;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 99;
+    background: var(--white);
+    flex-direction: column;
+    padding: 100px 32px 32px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .nav-links-mobile.open { max-height: 400px; }
+  .nav-links-mobile li { border-bottom: 1px solid var(--light-gray); }
+  .nav-links-mobile a {
+    display: block;
+    padding: 18px 0;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    color: var(--black);
+  }
+
   /* HERO */
   .color-flow {
     position: relative;
@@ -268,6 +316,7 @@
     opacity: 0;
     transition: opacity 0.3s;
     pointer-events: none;
+    background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0) 55%);
   }
   .work-item:hover .work-overlay { opacity: 1; }
   .work-overlay-title {
@@ -983,8 +1032,13 @@
 
   /* RESPONSIVE */
   @media (max-width: 768px) {
-    nav { padding: 16px 24px; }
-    .nav-links { gap: 20px; }
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    .nav-burger { display: flex; }
+    .nav-links-mobile { display: flex; }
+    .nav-logo { height: 40px; font-size: 16px; gap: 8px; }
+    .nav-logo img { height: 42px; }
+    .nav-logo-text { top: 11px; }
     #hero, #services, #about, #contact { padding: 80px 24px; }
     #hero { padding-top: 100px; }
     .work-header-wrap { padding: 0 24px; }
@@ -995,6 +1049,9 @@
     }
     .col-left, .col-right { gap: 8px; }
     .col-right { margin-top: 28px; }
+    .work-overlay { opacity: 1; padding: 16px; }
+    .work-overlay-title { font-size: 14px; }
+    .work-overlay-sub { font-size: 10px; }
     .bleed-left { margin-left: -24px; width: calc(100% + 24px); }
     .bleed-right { margin-right: -24px; width: calc(100% + 24px); }
     .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -1030,7 +1087,16 @@
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button class="nav-burger" id="navBurger" onclick="toggleMobileNav()" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<ul class="nav-links-mobile" id="navLinksMobile">
+  <li><a href="#work" onclick="closeMobileNav()">Work</a></li>
+  <li><a href="#services" onclick="closeMobileNav()">Services</a></li>
+  <li><a href="#about" onclick="closeMobileNav()">About</a></li>
+  <li><a href="#contact" onclick="closeMobileNav()">Contact</a></li>
+</ul>
 
 <!-- HERO + WORK share one continuous accent-color gradient that fades to white by the end of Work -->
 <div class="color-flow">
@@ -1418,6 +1484,16 @@
   window.addEventListener('scroll', () => {
     document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
   });
+
+  // Mobile nav menu
+  function toggleMobileNav() {
+    document.getElementById('navBurger').classList.toggle('open');
+    document.getElementById('navLinksMobile').classList.toggle('open');
+  }
+  function closeMobileNav() {
+    document.getElementById('navBurger').classList.remove('open');
+    document.getElementById('navLinksMobile').classList.remove('open');
+  }
 
   // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
